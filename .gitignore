@@ -1,0 +1,6 @@
+
+\.idea/
+
+*\.gradle\
+*\.exercism\
+*\build\
