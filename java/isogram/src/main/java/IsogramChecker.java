@@ -1,7 +1,19 @@
+import java.util.*;
+
 class IsogramChecker {
 
     boolean isIsogram(String phrase) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        phrase = phrase.replace("-", "").replace(" ", "").toLowerCase();
+
+        List<String> characters = Arrays.asList(phrase.split(""));
+        Set<String> characterCounter = new HashSet<>(characters);
+        for (String character: characterCounter) {
+            if (Collections.frequency(characters, character) > 1) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
 }
