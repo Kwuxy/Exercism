@@ -1,13 +1,12 @@
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 class RnaTranscription {
 
     String transcribe(String dnaStrand) {
-        StringBuilder builder = new StringBuilder();
-
-        for (String part: dnaStrand.split("")) {
-            builder.append(transcribeSingle(part));
-        }
-
-        return builder.toString();
+        return Stream.of(dnaStrand.split(""))
+                .map(this::transcribeSingle)
+                .collect(Collectors.joining());
     }
 
     String transcribeSingle(String dnaStrand) {
