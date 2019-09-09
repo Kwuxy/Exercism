@@ -1,15 +1,60 @@
+import java.util.Arrays;
 
 class Matrix {
+    private final int[][] matrix;
 
     Matrix(String matrixAsString) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        Integer[][] tempMatrix = convertStringMatrixToMatrix(matrixAsString);
+        matrix = convertInteger2DArrayToInt2DArray(tempMatrix);
     }
 
     int[] getRow(int rowNumber) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        return matrix[rowNumber - 1];
     }
 
     int[] getColumn(int columnNumber) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        int[] result = new int[matrix.length];
+
+        for(int i = 0; i < matrix.length; i++) {
+            int[] matrixRow = matrix[i];
+            result[i] = matrixRow[columnNumber - 1];
+        }
+
+        return result;
+    }
+
+    private int[][] convertInteger2DArrayToInt2DArray(Integer[][] input) {
+        int[][] result = new int[input.length][];
+
+        for (int counter = 0; counter < input.length; counter++) {
+            int[] array = new int[input[counter].length];
+            Integer[] values = input[counter];
+
+            for (int i = 0; i < values.length; i++) {
+                array[i] = values[i];
+            }
+
+            result[counter] = array;
+        }
+
+        return result;
+    }
+
+    private Integer[][] convertStringMatrixToMatrix(String matrixAsString) {
+        return Arrays.stream(matrixAsString.split("\n"))
+                .map(this::cutRow)
+                .map(this::convertChoppedRowToIntArray)
+                .toArray(Integer[][]::new);
+    }
+
+    private String[] cutRow(String row) {
+        return row.split(" ");
+    }
+
+    private Integer[] convertChoppedRowToIntArray(String[] choppedRow) {
+        return Arrays.stream(choppedRow)
+                .mapToInt(Integer::valueOf)
+                .boxed()
+                .toArray(Integer[]::new);
     }
 }
