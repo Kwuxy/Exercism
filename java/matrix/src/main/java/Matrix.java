@@ -1,59 +1,49 @@
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 class Matrix {
-    private final int[][] matrix;
+    private final int[][] rows;
+    private final int[][] cols;
 
     Matrix(String matrixAsString) {
-        matrix = convertStringMatrixToMatrix(matrixAsString);
-//        matrix = convertInteger2DArrayToInt2DArray(tempMatrix);
+        rows = parseMatrix(matrixAsString);
+        cols = transpose();
     }
 
     int[] getRow(int rowNumber) {
-        return matrix[rowNumber - 1];
+        return rows[rowNumber - 1];
     }
 
     int[] getColumn(int columnNumber) {
-        int[] result = new int[matrix.length];
-
-        for(int i = 0; i < matrix.length; i++) {
-            int[] matrixRow = matrix[i];
-            result[i] = matrixRow[columnNumber - 1];
-        }
-
-        return result;
+        return cols[columnNumber - 1];
     }
 
-    private int[][] convertInteger2DArrayToInt2DArray(Integer[][] input) {
-        int[][] result = new int[input.length][];
-
-        for (int counter = 0; counter < input.length; counter++) {
-            int[] array = new int[input[counter].length];
-            Integer[] values = input[counter];
-
-            for (int i = 0; i < values.length; i++) {
-                array[i] = values[i];
-            }
-
-            result[counter] = array;
-        }
-
-        return result;
-    }
-
-    private int[][] convertStringMatrixToMatrix(String matrixAsString) {
+    private int[][] parseMatrix(String matrixAsString) {
         return Arrays.stream(matrixAsString.split("\n"))
-                .map(this::cutRow)
-                .map(this::convertChoppedRowToIntArray)
+                .map(this::parseRows)
+                .map(this::parseSingleRow)
                 .toArray(int[][]::new);
     }
 
-    private String[] cutRow(String row) {
+    private String[] parseRows(String row) {
         return row.split(" ");
     }
 
-    private int[] convertChoppedRowToIntArray(String[] choppedRow) {
-        return Arrays.stream(choppedRow)
+    private int[] parseSingleRow(String[] row) {
+        return Arrays.stream(row)
                 .mapToInt(Integer::parseInt)
+                .toArray();
+    }
+
+    private int[][] transpose() {
+        return IntStream.range(0, rows[0].length)
+                .mapToObj(this::transposeColumn)
+                .toArray(int[][]::new);
+    }
+
+    private int[] transposeColumn(int columnIndex) {
+        return Arrays.stream(rows)
+                .mapToInt(row -> row[columnIndex])
                 .toArray();
     }
 }
