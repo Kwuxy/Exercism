@@ -4,8 +4,8 @@ class Matrix {
     private final int[][] matrix;
 
     Matrix(String matrixAsString) {
-        Integer[][] tempMatrix = convertStringMatrixToMatrix(matrixAsString);
-        matrix = convertInteger2DArrayToInt2DArray(tempMatrix);
+        matrix = convertStringMatrixToMatrix(matrixAsString);
+//        matrix = convertInteger2DArrayToInt2DArray(tempMatrix);
     }
 
     int[] getRow(int rowNumber) {
@@ -40,21 +40,20 @@ class Matrix {
         return result;
     }
 
-    private Integer[][] convertStringMatrixToMatrix(String matrixAsString) {
+    private int[][] convertStringMatrixToMatrix(String matrixAsString) {
         return Arrays.stream(matrixAsString.split("\n"))
                 .map(this::cutRow)
                 .map(this::convertChoppedRowToIntArray)
-                .toArray(Integer[][]::new);
+                .toArray(int[][]::new);
     }
 
     private String[] cutRow(String row) {
         return row.split(" ");
     }
 
-    private Integer[] convertChoppedRowToIntArray(String[] choppedRow) {
+    private int[] convertChoppedRowToIntArray(String[] choppedRow) {
         return Arrays.stream(choppedRow)
-                .mapToInt(Integer::valueOf)
-                .boxed()
-                .toArray(Integer[]::new);
+                .mapToInt(Integer::parseInt)
+                .toArray();
     }
 }
