@@ -85,6 +85,51 @@ class VariableLengthQuantity {
     }
 
     List<String> decode(List<Long> bytes) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        final List<List<Long>> VLQNumbers = splitByNumber(bytes);
+
+        return VLQNumbers.stream()
+                .map(this::decodeSingleVLQ)
+                .collect(Collectors.toList());
+    }
+
+    private String decodeSingleVLQ(List<Long> vlqNumber) {
+        final String binaryString = convertSingleVLQToBinaryString(vlqNumber);
+        final String draftHexadecimal = new BigInteger(binaryString, 2).toString(16);
+        return new StringBuilder(draftHexadecimal).insert(0, "0x").toString();
+    }
+
+    private String convertSingleVLQToBinaryString(List<Long> vlqNumber) {
+        return vlqNumber.stream()
+                .map(Long::toBinaryString)
+                .map(this::completeTo8Bytes)
+                .map(binary -> binary.substring(1))
+                .collect(Collectors.joining());
+    }
+
+    private String completeTo8Bytes(String binary) {
+        final StringBuilder stringBuilder = new StringBuilder(binary);
+        while(stringBuilder.length() < 8) {
+            stringBuilder.insert(0, '0');
+        }
+        return stringBuilder.toString();
+    }
+
+    private List<List<Long>> splitByNumber(List<Long> bytes) {
+        final List<List<Long>> VLQNumbers = new ArrayList<>();
+        List<Long> VLQ = new ArrayList<>();
+
+        if (bytes.get(bytes.size() - 1) >= 0x80) {
+            throw new IllegalArgumentException("Invalid variable-length quantity encoding");
+        }
+
+        for (Long VLQPart : bytes) {
+            VLQ.add(VLQPart);
+            if (VLQPart < 0x80) {
+                VLQNumbers.add(VLQ);
+                VLQ = new ArrayList<>();
+            }
+        }
+
+        return VLQNumbers;
     }
 }
