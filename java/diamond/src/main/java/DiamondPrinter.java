@@ -20,24 +20,28 @@ class DiamondPrinter {
 
     private String generateDiamondLine(Map.Entry entry) {
         final StringBuilder line = new StringBuilder();
-        generateExternalSpacesOfLine(line, (maxLetter - 'A') - (Integer) entry.getKey());
+        generateExternalSpacesOfLine(line, (Integer) entry.getKey());
         line.append(entry.getValue());
 
         if((Integer) entry.getKey() != 0) {
-            generateInternalSpacesOfLine(line, (Integer) entry.getKey() * 2 - 1);
+            generateInternalSpacesOfLine(line, (Integer) entry.getKey());
             line.append(entry.getValue());
         }
 
-        generateExternalSpacesOfLine(line, (maxLetter - 'A') - (Integer) entry.getKey());
+        generateExternalSpacesOfLine(line, (Integer) entry.getKey());
         return line.toString();
     }
 
-    private void generateInternalSpacesOfLine(StringBuilder line, Integer numberOfSpaces) {
-        line.append(" ".repeat(numberOfSpaces));
+    private void generateInternalSpacesOfLine(StringBuilder line, Integer indexOfLetter) {
+        generateSpacesOfLine(line, indexOfLetter * 2 - 1);
     }
 
-    private void generateExternalSpacesOfLine(StringBuilder line, Integer numberOfSpaces) {
-        line.append(" ".repeat(Math.max(0, numberOfSpaces)));
+    private void generateExternalSpacesOfLine(StringBuilder line, Integer indexOfLetter) {
+        generateSpacesOfLine(line, (maxLetter - 'A') - indexOfLetter);
+    }
+
+    private void generateSpacesOfLine(StringBuilder line, Integer numberOfSpaces) {
+        line.append(" ".repeat(numberOfSpaces));
     }
 
     private List<Map.Entry> getConfigOfDiamond() {
