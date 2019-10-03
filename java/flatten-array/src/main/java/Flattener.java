@@ -1,10 +1,26 @@
-/*
+import java.util.ArrayList;
+import java.util.List;
 
-Since this exercise has a difficulty of > 4 it doesn't come
-with any starter implementation.
-This is so that you get to practice creating classes and methods
-which is an important part of programming in Java.
+public class Flattener {
+    public List<Object> flatten(Object input) {
+        final List<Object> result = new ArrayList<>();
+        if(!(input instanceof List)) {
+            return processSingleValue(result, input);
+        }
+        return processList(result, (List<?>) input);
+    }
 
-Please remove this comment when submitting your solution.
+    private List<Object> processSingleValue(List<Object> concatenatedList, Object singleValue) {
+        if(singleValue != null) {
+            concatenatedList.add(singleValue);
+        }
+        return concatenatedList;
+    }
 
-*/
+    private List<Object> processList(List<Object> concatenatedList, List<?> list) {
+        for(Object o : list) {
+            concatenatedList.addAll(flatten(o));
+        }
+        return concatenatedList;
+    }
+}
