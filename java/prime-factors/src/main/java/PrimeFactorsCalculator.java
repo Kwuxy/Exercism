@@ -1,10 +1,46 @@
-/*
+import java.util.ArrayList;
+import java.util.List;
 
-Since this exercise has a difficulty of > 4 it doesn't come
-with any starter implementation.
-This is so that you get to practice creating classes and methods
-which is an important part of programming in Java.
+class PrimeFactorsCalculator {
 
-Please remove this comment when submitting your solution.
+    private long number;
+    private List<Long> factors;
 
-*/
+    private void initCalculation(long number) {
+        this.factors = new ArrayList<>();
+        this.number = number;
+    }
+
+    public List<Long> calculatePrimeFactorsOf(long number) {
+        initCalculation(number);
+
+        while(numberHasFactors()) {
+            calculateOneFactor();
+        }
+
+        return getFactors();
+    }
+
+    private boolean numberHasFactors() {
+        return number != 1;
+    }
+
+    private void calculateOneFactor() {
+        long factor = getOneFactor();
+        factors.add(factor);
+        this.number /= factor;
+    }
+
+    private long getOneFactor() {
+        long factor = 2;
+        while(number % factor != 0) {
+            factor++;
+        }
+
+        return factor;
+    }
+
+    private List<Long> getFactors() {
+        return factors;
+    }
+}
