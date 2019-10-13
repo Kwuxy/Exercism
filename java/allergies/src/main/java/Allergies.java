@@ -1,10 +1,26 @@
-/*
+import java.util.EnumSet;
+import java.util.List;
+import java.util.stream.Collectors;
 
-Since this exercise has a difficulty of > 4 it doesn't come
-with any starter implementation.
-This is so that you get to practice creating classes and methods
-which is an important part of programming in Java.
+class Allergies {
 
-Please remove this comment when submitting your solution.
+    private final int score;
 
-*/
+    public Allergies(int score) {
+        this.score = score;
+    }
+
+    public boolean isAllergicTo(Allergen allergen) {
+        return sharedBit(allergen) == allergen.getScore();
+    }
+
+    public List<Allergen> getList() {
+        return EnumSet.allOf(Allergen.class).stream()
+                .filter(this::isAllergicTo)
+                .collect(Collectors.toList());
+    }
+
+    private int sharedBit(Allergen allergen) {
+        return score & allergen.getScore();
+    }
+}
