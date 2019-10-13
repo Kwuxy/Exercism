@@ -21,7 +21,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void shouting() {
         assertEquals(
@@ -30,7 +29,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void shoutingGibberish() {
         assertEquals(
@@ -39,7 +37,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void askingAQuestion() {
         assertEquals(
@@ -48,7 +45,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void askingANumericQuestion() {
         assertEquals(
@@ -57,7 +53,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void askingGibberish() {
         assertEquals(
@@ -66,7 +61,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void talkingForcefully() {
         assertEquals(
@@ -75,7 +69,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void usingAcronymsInRegularSpeech() {
         assertEquals(
@@ -83,7 +76,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void forcefulQuestions() {
         assertEquals(
@@ -91,7 +83,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void shoutingNumbers() {
         assertEquals(
@@ -99,7 +90,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void onlyNumbers() {
         assertEquals(
@@ -107,7 +97,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void questionWithOnlyNumbers() {
         assertEquals(
@@ -115,7 +104,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void shoutingWithSpecialCharacters() {
         assertEquals(
@@ -123,7 +111,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void shoutingWithNoExclamationMark() {
         assertEquals(
@@ -131,7 +118,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void statementContainingQuestionMark() {
         assertEquals(
@@ -139,7 +125,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void nonLettersWithQuestion() {
         assertEquals(
@@ -147,7 +132,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void prattlingOn() {
         assertEquals(
@@ -155,7 +139,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void silence() {
         assertEquals(
@@ -163,7 +146,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void prolongedSilence() {
         assertEquals(
@@ -171,7 +153,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void alternateSilence() {
         assertEquals(
@@ -179,7 +160,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void multipleLineQuestion() {
         assertEquals(
@@ -188,7 +168,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void startingWithWhitespace() {
         assertEquals(
@@ -197,7 +176,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void endingWithWhiteSpace() {
         assertEquals(
@@ -206,7 +184,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void otherWhiteSpace() {
         assertEquals(
@@ -215,7 +192,6 @@ public class BobTest {
         );
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void nonQuestionEndingWithWhiteSpace() {
         assertEquals(
