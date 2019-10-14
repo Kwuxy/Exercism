@@ -1,10 +1,60 @@
-/*
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-Since this exercise has a difficulty of > 4 it doesn't come
-with any starter implementation.
-This is so that you get to practice creating classes and methods
-which is an important part of programming in Java.
+class BracketChecker {
+    private final String phrase;
+    private final List<Character> brackets;
+    private static final Map<Character, Character> bracketDictionary = Stream.of(new Character[][] {
+            {'{', '}'},
+            {'(', ')'},
+            {'[', ']'}
+    }).collect(Collectors.toMap(tuple -> tuple[0], tuple -> tuple[1]));
 
-Please remove this comment when submitting your solution.
+    public BracketChecker(String phrase) {
+        this.phrase = cleanPhrase(phrase);
+        this.brackets = new ArrayList<>();
+    }
 
-*/
+    public boolean areBracketsMatchedAndNestedCorrectly() {
+        return areBracketsNestedCorrectly() && bracketsHaveAllBeenProcessedByPair();
+    }
+
+    private boolean bracketsHaveAllBeenProcessedByPair() {
+        return brackets.size() == 0;
+    }
+
+    private boolean areBracketsNestedCorrectly() {
+        return phrase.chars()
+                .mapToObj(c -> (char) c)
+                .allMatch(this::isValidBracket);
+    }
+
+    private boolean isValidBracket(Character character) {
+        if(isOpeningBracket(character)) {
+            return brackets.add(character);
+        }
+
+        return isValidClosingBracket(character);
+    }
+
+    private boolean isValidClosingBracket(Character character) {
+        Character lastBracket = getAndRemoveLastBracket();
+        return bracketDictionary.get(lastBracket) == character;
+    }
+    
+    private Character getAndRemoveLastBracket() {
+        if(brackets.size() == 0) return null;
+        return brackets.remove(brackets.size() - 1);
+    }
+
+    private boolean isOpeningBracket(Character character) {
+        return character == '{' || character == '[' || character == '(';
+    }
+
+    private String cleanPhrase(String phrase) {
+        return phrase.replaceAll("[^{}()\\[\\]]", "");
+    }
+}
