@@ -26,7 +26,6 @@ public class PascalsTriangleGeneratorTest {
         assertArrayEquals(expectedOutput, pascalsTriangleGenerator.generateTriangle(0));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testTriangleWithOneRow() {
         int[][] expectedOutput = new int[][]{
@@ -36,7 +35,6 @@ public class PascalsTriangleGeneratorTest {
         assertArrayEquals(expectedOutput, pascalsTriangleGenerator.generateTriangle(1));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testTriangleWithTwoRows() {
         int[][] expectedOutput = new int[][]{
@@ -47,7 +45,6 @@ public class PascalsTriangleGeneratorTest {
         assertArrayEquals(expectedOutput, pascalsTriangleGenerator.generateTriangle(2));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testTriangleWithThreeRows() {
         int[][] expectedOutput = new int[][]{
@@ -59,7 +56,6 @@ public class PascalsTriangleGeneratorTest {
         assertArrayEquals(expectedOutput, pascalsTriangleGenerator.generateTriangle(3));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testTriangleWithFourRows() {
         int[][] expectedOutput = new int[][]{
@@ -72,7 +68,6 @@ public class PascalsTriangleGeneratorTest {
         assertArrayEquals(expectedOutput, pascalsTriangleGenerator.generateTriangle(4));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testTriangleWithFiveRows() {
         int[][] expectedOutput = new int[][]{
@@ -86,7 +81,6 @@ public class PascalsTriangleGeneratorTest {
         assertArrayEquals(expectedOutput, pascalsTriangleGenerator.generateTriangle(5));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testTriangleWithSixRows() {
         int[][] expectedOutput = new int[][]{
@@ -101,7 +95,6 @@ public class PascalsTriangleGeneratorTest {
         assertArrayEquals(expectedOutput, pascalsTriangleGenerator.generateTriangle(6));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testTriangleWithTenRows() {
         int[][] expectedOutput = new int[][]{
