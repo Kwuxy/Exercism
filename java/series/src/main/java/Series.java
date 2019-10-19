@@ -1,10 +1,52 @@
-/*
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
-Since this exercise has a difficulty of > 4 it doesn't come
-with any starter implementation.
-This is so that you get to practice creating classes and methods
-which is an important part of programming in Java.
+class Series {
 
-Please remove this comment when submitting your solution.
+    private final String sequence;
+    private int slicesLength;
 
-*/
+    public Series(String sequence) {
+        this.sequence = sequence;
+    }
+
+    public List<String> slices(int slicesLength) {
+        this.slicesLength = slicesLength;
+        checkSlicesRequestIsValid();
+
+        int sequenceSlicesNumber = getSequenceSlicesNumber();
+        return sliceSequence(sequenceSlicesNumber);
+    }
+
+    private List<String> sliceSequence(int sequenceSlicesNumber) {
+        return IntStream.range(0, sequenceSlicesNumber)
+                .mapToObj(this::sliceSequenceAt)
+                .collect(Collectors.toList());
+    }
+
+    private String sliceSequenceAt(int index) {
+        return sequence.substring(index, index + slicesLength);
+    }
+
+    private int getSequenceSlicesNumber() {
+        return sequence.length() - slicesLength + 1;
+    }
+
+    private void checkSlicesRequestIsValid() {
+        checkSlicesLengthIsTooBig();
+        checkSlicesLengthIsTooSmall();
+    }
+
+    private void checkSlicesLengthIsTooBig() {
+        if(slicesLength > sequence.length()) {
+            throw new IllegalArgumentException("Slice size is too big.");
+        }
+    }
+
+    private void checkSlicesLengthIsTooSmall() {
+        if(slicesLength < 1) {
+            throw new IllegalArgumentException("Slice size is too small.");
+        }
+    }
+}
