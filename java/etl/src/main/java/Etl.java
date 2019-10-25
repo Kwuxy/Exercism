@@ -1,8 +1,15 @@
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 class Etl {
     Map<String, Integer> transform(Map<Integer, List<String>> old) {
-        throw new UnsupportedOperationException("Delete this statement and write your own implementation.");
+        Map<String, Integer> result = new HashMap<>();
+
+        for (Map.Entry<Integer, List<String>> entry : old.entrySet()) {
+            for (String letter : entry.getValue()) {
+                result.put(letter.toLowerCase(), entry.getKey());
+            }
+        }
+
+        return result;
     }
 }
