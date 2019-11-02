@@ -40,7 +40,7 @@ class ErrorHandling {
 
     void handleErrorByThrowingCustomUncheckedExceptionWithDetailMessage(String message) {
         throw new CustomUncheckedException(message);
-    }exercism download --exercise=grade-school --track=java
+    }
 
     Optional<Integer> handleErrorByReturningOptionalInstance(String integer) {
         try {

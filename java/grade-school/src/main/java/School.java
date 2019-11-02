@@ -1,10 +1,31 @@
-/*
+import java.util.*;
+import java.util.stream.Collectors;
 
-Since this exercise has a difficulty of > 4 it doesn't come
-with any starter implementation.
-This is so that you get to practice creating classes and methods
-which is an important part of programming in Java.
+class School {
+    private final Map<Integer, List<String>> studentsByGrade;
 
-Please remove this comment when submitting your solution.
+    School() {
+        this.studentsByGrade = new HashMap<>();
+    }
 
-*/
+    public List<String> roster() {
+        return studentsByGrade.values().stream()
+                .flatMap(List::stream)
+                .collect(Collectors.toList());
+    }
+
+    public void add(String student, int grade) {
+        initStudentListIfNotExists(grade);
+        studentsByGrade.get(grade).add(student);
+        studentsByGrade.get(grade).sort(Comparator.naturalOrder());
+    }
+
+    private void initStudentListIfNotExists(int grade) {
+        studentsByGrade.computeIfAbsent(grade, k -> new ArrayList<>());
+    }
+
+    public List<String> grade(int grade) {
+        final List<String> students = studentsByGrade.get(grade);
+        return students == null ? new ArrayList<>() : students;
+    }
+}
