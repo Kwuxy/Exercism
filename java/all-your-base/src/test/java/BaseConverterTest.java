@@ -28,7 +28,6 @@ public class BaseConverterTest {
               actualDigits);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testBinaryToSingleDecimal() {
         BaseConverter baseConverter = new BaseConverter(2, new int[]{1, 0, 1});
@@ -45,7 +44,6 @@ public class BaseConverterTest {
               actualDigits);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testSingleDecimalToBinary() {
         BaseConverter baseConverter = new BaseConverter(10, new int[]{5});
@@ -62,7 +60,6 @@ public class BaseConverterTest {
               actualDigits);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testBinaryToMultipleDecimal() {
         BaseConverter baseConverter = new BaseConverter(2, new int[]{1, 0, 1, 0, 1, 0});
@@ -79,7 +76,6 @@ public class BaseConverterTest {
                 actualDigits);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testDecimalToBinary() {
         BaseConverter baseConverter = new BaseConverter(10, new int[]{4, 2});
@@ -96,7 +92,6 @@ public class BaseConverterTest {
               actualDigits);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testTrinaryToHexadecimal() {
         BaseConverter baseConverter = new BaseConverter(3, new int[]{1, 1, 2, 0});
@@ -113,7 +108,6 @@ public class BaseConverterTest {
               actualDigits);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testHexadecimalToTrinary() {
         BaseConverter baseConverter = new BaseConverter(16, new int[]{2, 10});
@@ -130,7 +124,6 @@ public class BaseConverterTest {
               actualDigits);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void test15BitInteger() {
         BaseConverter baseConverter = new BaseConverter(97, new int[]{3, 46, 60});
@@ -147,7 +140,6 @@ public class BaseConverterTest {
               actualDigits);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testEmptyDigits() {
         BaseConverter baseConverter = new BaseConverter(2, new int[]{});
@@ -164,7 +156,6 @@ public class BaseConverterTest {
             actualDigits);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testSingleZero() {
         BaseConverter baseConverter = new BaseConverter(10, new int[]{0});
@@ -181,7 +172,6 @@ public class BaseConverterTest {
             actualDigits);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testMultipleZeros() {
         BaseConverter baseConverter = new BaseConverter(10, new int[]{0, 0, 0});
@@ -198,7 +188,6 @@ public class BaseConverterTest {
             actualDigits);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testLeadingZeros() {
         BaseConverter baseConverter = new BaseConverter(7, new int[]{0, 6, 0});
@@ -215,7 +204,6 @@ public class BaseConverterTest {
             actualDigits);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testFirstBaseIsOne() {
         expectedException.expect(IllegalArgumentException.class);
@@ -224,7 +212,6 @@ public class BaseConverterTest {
         new BaseConverter(1, new int[]{1});
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testFirstBaseIsZero() {
         expectedException.expect(IllegalArgumentException.class);
@@ -233,7 +220,6 @@ public class BaseConverterTest {
         new BaseConverter(0, new int[]{});
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testFirstBaseIsNegative() {
         expectedException.expect(IllegalArgumentException.class);
@@ -242,7 +228,6 @@ public class BaseConverterTest {
         new BaseConverter(-2, new int[]{});
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testNegativeDigit() {
         expectedException.expect(IllegalArgumentException.class);
@@ -251,7 +236,6 @@ public class BaseConverterTest {
         new BaseConverter(2, new int[]{1, -1, 1, 0, 1, 0});
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testInvalidPositiveDigit() {
         expectedException.expect(IllegalArgumentException.class);
@@ -260,7 +244,6 @@ public class BaseConverterTest {
         new BaseConverter(2, new int[]{1, 2, 1, 0, 1, 0});
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testSecondBaseIsOne() {
         BaseConverter baseConverter = new BaseConverter(2, new int[]{1, 0, 1, 0, 1, 0});
@@ -271,7 +254,6 @@ public class BaseConverterTest {
         baseConverter.convertToBase(1);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testSecondBaseIsZero() {
         BaseConverter baseConverter = new BaseConverter(10, new int[]{7});
@@ -282,7 +264,6 @@ public class BaseConverterTest {
         baseConverter.convertToBase(0);
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testSecondBaseIsNegative() {
         BaseConverter baseConverter = new BaseConverter(2, new int[]{1});
