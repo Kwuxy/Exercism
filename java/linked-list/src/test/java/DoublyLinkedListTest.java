@@ -19,7 +19,6 @@ public class DoublyLinkedListTest {
         assertThat(list.pop(), is(10));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testPushShift() {
         DoublyLinkedList<String> list = new DoublyLinkedList<>();
@@ -33,7 +32,6 @@ public class DoublyLinkedListTest {
         assertThat(list.shift(), is("30"));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testUnshiftShift() {
         DoublyLinkedList<Character> list = new DoublyLinkedList<>();
@@ -47,7 +45,6 @@ public class DoublyLinkedListTest {
         assertThat(list.shift(), is('1'));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testUnshiftPop() {
         DoublyLinkedList<Integer> list = new DoublyLinkedList<>();
@@ -61,7 +58,6 @@ public class DoublyLinkedListTest {
         assertThat(list.pop(), is(30));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void testExample() {
         DoublyLinkedList<String> list = new DoublyLinkedList<>();
