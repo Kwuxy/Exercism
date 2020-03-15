@@ -29,7 +29,6 @@ public class ParallelLetterFrequencyTest {
         assertEquals(expectedOutput, p.letterCounts());
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void oneLetterIsCorrectlyCounted() {
         String input = "a";
@@ -43,7 +42,6 @@ public class ParallelLetterFrequencyTest {
         assertEquals(expectedOutput, p.letterCounts());
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void resultsAreCaseInsensitive() {
         String input = "Aa";
@@ -58,7 +56,6 @@ public class ParallelLetterFrequencyTest {
     }
 
 
-    @Ignore("Remove to run test")
     @Test
     public void biggerEmptyTextsStillReturnNoResults() {
         StringBuilder b = new StringBuilder();
@@ -72,7 +69,6 @@ public class ParallelLetterFrequencyTest {
         assertEquals(expectedOutput, p.letterCounts());
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void manyRepetitionsOfTheSameTextGiveAPredictableResult() {
         StringBuilder b = new StringBuilder();
@@ -93,7 +89,6 @@ public class ParallelLetterFrequencyTest {
     }
 
 
-    @Ignore("Remove to run test")
     @Test
     public void punctuationDoesntCount() {
         ParallelLetterFrequency p = new ParallelLetterFrequency(starSpangledBanner);
@@ -101,11 +96,28 @@ public class ParallelLetterFrequencyTest {
         assertFalse(p.letterCounts().containsKey((int) ','));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void numbersDontCount() {
         ParallelLetterFrequency p = new ParallelLetterFrequency("Testing, 1, 2, 3");
 
         assertFalse(p.letterCounts().containsKey((int) '1'));
+    }
+
+    @Test
+    public void wilhelmus() {
+        String lyrics = "Wilhelmus van Nassouwe\n" +
+                "Ben ik, van Duitsen bloed,\n" +
+                "Den vaderland getrouwe\n" +
+                "Blijf ik tot in den dood.\n" +
+                "Een Prinse van Oranje\n" +
+                "Ben ik, vrij, onverveerd,\n" +
+                "Den Koning van Hispanje\n" +
+                "Heb ik altijd geëerd.";
+
+        final ParallelLetterFrequency p = new ParallelLetterFrequency(lyrics);
+        final Map<Integer, Integer> results = p.letterCounts();
+
+        assertEquals(results.get((int) 'e').intValue(), 23);
+        assertEquals(results.get((int) 'ë').intValue(), 1);
     }
 }

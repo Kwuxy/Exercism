@@ -1,10 +1,29 @@
-/*
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentMap;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
-Since this exercise has a difficulty of > 4 it doesn't come
-with any starter implementation.
-This is so that you get to practice creating classes and methods
-which is an important part of programming in Java.
+public class ParallelLetterFrequency {
+    private String text;
 
-Please remove this comment when submitting your solution.
+    public ParallelLetterFrequency(String input) {
+        text = input.replaceAll("[^\\p{L}]", "").toLowerCase();
+    }
 
-*/
+    public Map<Integer, Integer> letterCounts() {
+        final ConcurrentMap<Integer, Long> concurrentMap = text.chars()
+                .parallel()
+                .boxed()
+                .collect(Collectors.groupingByConcurrent(Function.identity(), Collectors.counting()));
+
+        final HashMap<Integer, Integer> result = new HashMap<>();
+        for (Map.Entry<Integer, Long> entry : concurrentMap.entrySet()) {
+            result.put(entry.getKey(), entry.getValue().intValue());
+        }
+
+        return result;
+    }
+}
