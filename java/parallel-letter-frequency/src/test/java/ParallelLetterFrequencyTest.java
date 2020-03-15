@@ -88,7 +88,6 @@ public class ParallelLetterFrequencyTest {
         assertEquals(expectedOutput, p.letterCounts());
     }
 
-
     @Test
     public void punctuationDoesntCount() {
         ParallelLetterFrequency p = new ParallelLetterFrequency(starSpangledBanner);
