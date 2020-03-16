@@ -13,7 +13,6 @@ public class RailFenceCipherTest {
             railFenceCipher.getEncryptedData("XOXOXOXOXOXOXOXOXO"));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void encodeWithThreeRails() {
         railFenceCipher = new RailFenceCipher(3);
@@ -21,7 +20,6 @@ public class RailFenceCipherTest {
             railFenceCipher.getEncryptedData("WEAREDISCOVEREDFLEEATONCE"));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void encodeWithEndingInTheMiddle() {
         railFenceCipher = new RailFenceCipher(4);
@@ -29,7 +27,6 @@ public class RailFenceCipherTest {
             railFenceCipher.getEncryptedData("EXERCISES"));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void decodeWithThreeRails() {
         railFenceCipher = new RailFenceCipher(3);
@@ -37,7 +34,6 @@ public class RailFenceCipherTest {
             railFenceCipher.getDecryptedData("TEITELHDVLSNHDTISEIIEA"));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void decodeWithFiveRails() {
         railFenceCipher = new RailFenceCipher(5);
@@ -45,7 +41,6 @@ public class RailFenceCipherTest {
             railFenceCipher.getDecryptedData("EIEXMSMESAORIWSCE"));
     }
 
-    @Ignore("Remove to run test")
     @Test
     public void decodeWithSixRails() {
         railFenceCipher = new RailFenceCipher(6);
